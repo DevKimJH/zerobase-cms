@@ -13,9 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 @RequiredArgsConstructor
 public class CmsApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(CmsApplication.class, args);
 	}
-
 }
