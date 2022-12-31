@@ -11,6 +11,7 @@ import java.util.Locale;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,7 +33,7 @@ public class Customer extends BaseEntity {
     private String verificationCode;
     private boolean verify;
 
-    public static Customer from(SignUpForm form){
+    public static Customer from(SignUpForm form) {
         return Customer.builder()
                 .email(form.getEmail().toLowerCase(Locale.ROOT))
                 .password(form.getPassword())
