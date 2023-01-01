@@ -1,0 +1,49 @@
+### 회원가입 (고객)
+POST http://localhost:8081/signup/customer
+Content-Type: application/json
+
+{
+  "birth": "1993-01-27",
+  "email": "hg116701@naver.com",
+  "name": "myName",
+  "password": "pw",
+  "phone": "01000000000"
+}
+
+### 이메일 인증 ( 고객 )
+GET http://localhost:8081/signup/customer/verify?email=hg116701@naver.com&code=BrVeJEmVYZ
+
+### 로그인 (고객)
+POST http://localhost:8081/signIn/customer
+Content-Type: application/json
+
+{
+  "email": "hg116701@naver.com",
+  "password": "pw"
+}
+
+### 회원 정보 조회 (고객)
+GET http://localhost:8081/customer/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJZZjhzaWJYMjR6VElkZWpXTnlYLzBHTjVNdExhS0NHMVJUNVlBN3V4aFZzPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2NzI1NTk4MjQsImV4cCI6MTY3MjY0NjIyNH0.9XaMgn02en6Dp4vGpLQknCSME_Zs8dU6oVj94Yt7RBA
+
+
+
+### 잔액 변경(고객)
+POST http://localhost:8081/customer/balance
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJZZjhzaWJYMjR6VElkZWpXTnlYLzBHTjVNdExhS0NHMVJUNVlBN3V4aFZzPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2NzI1NTk4MjQsImV4cCI6MTY3MjY0NjIyNH0.9XaMgn02en6Dp4vGpLQknCSME_Zs8dU6oVj94Yt7RBA
+
+{
+  "from": "server",
+  "message": "돈 충전",
+  "money": 50000
+}
+
+
+#########################
+
+### 회원가입 (판매자)
+
+### 로그인 (판매자)
+

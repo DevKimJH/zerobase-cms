@@ -6,7 +6,7 @@ import com.zerobase.cms.user.domain.model.Customer;
 import com.zerobase.cms.user.exception.CustomException;
 import com.zerobase.cms.user.exception.ErrorCode;
 import com.zerobase.cms.user.service.CustomerBalanceService;
-import com.zerobase.cms.user.service.CustomerService;
+import com.zerobase.cms.user.service.customer.CustomerService;
 import com.zerobase.domain.common.UserVo;
 import com.zerobase.domain.config.JwtAuthenticationProvider;
 import lombok.RequiredArgsConstructor;
@@ -23,21 +23,16 @@ public class CustomerController {
     private final CustomerBalanceService customerBalanceService;
 
     @GetMapping("/getInfo")
-    public ResponseEntity<CustomerDto> getInfo(@RequestHeader(name = "X-AUTH-TOKEN") String token){
-
-        UserVo vo = provider.getUserVo(token);
-
-        Customer c = customerService.findByIdAndEmail(vo.getId(), vo.getEmail()).orElseThrow(
-                () -> new CustomException(ErrorCode.NOT_FOUND_USER)
-        );
-
-        return ResponseEntity.ok(CustomerDto.from(c));
+    public ResponseEntity<CustomerDto> getInfo(@RequestHeader(name = "X-AUTH-TOKEN") String token) {
+        UserVo userVo = provider.getUserVo(token);
+        Customer customer = customerService.findByIdAndEmail(userVo.getId(), userVo.getEmail())
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
+        return ResponseEntity.ok(CustomerDto.from(customer));
     }
 
     @PostMapping("/balance")
     public ResponseEntity<Integer> changeBalance(@RequestHeader(name = "X-AUTH-TOKEN") String token,
                                            @RequestBody ChangeBalanceForm form) {
-
         UserVo userVo = provider.getUserVo(token);
         return ResponseEntity.ok(customerBalanceService.changeBalance(userVo.getId(), form).getCurrentMoney());
     }
