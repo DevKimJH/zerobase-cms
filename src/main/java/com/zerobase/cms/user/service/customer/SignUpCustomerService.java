@@ -1,4 +1,4 @@
-package com.zerobase.cms.user.service;
+package com.zerobase.cms.user.service.customer;
 
 import com.zerobase.cms.user.domain.SignUpForm;
 import com.zerobase.cms.user.domain.model.Customer;
@@ -47,11 +47,11 @@ public class SignUpCustomerService {
 
         customer.setVerify(true);
 
-
+        customerRepository.save(customer);
     }
 
     @Transactional
-    public LocalDateTime changeCustomerEmailValidateEmail(Long customerId, String verificationCode){
+    public LocalDateTime changeCustomerValidateEmail(Long customerId, String verificationCode){
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
 
         if(customerOptional.isPresent()){
