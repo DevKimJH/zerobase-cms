@@ -1,0 +1,41 @@
+### 상품 추가
+POST http://localhost:8082/seller/product
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJZZjhzaWJYMjR6VElkZWpXTnlYLzBHTjVNdExhS0NHMVJUNVlBN3V4aFZzPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjcyNTc5ODU4LCJleHAiOjE2NzI2NjYyNTh9.qRAAVY8GrnOIBBXbg4f15bU7q4CZQTrzloEx_p7ocFw
+
+{
+  "description": "상품 설명",
+  "items": [
+    {
+      "count": 1,
+      "name": "270",
+      "price": 100000
+    }
+  ],
+  "name": "나이키 에어포스"
+}
+
+### 상품 아이템 추가
+POST http://localhost:8082/seller/product/item
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJZZjhzaWJYMjR6VElkZWpXTnlYLzBHTjVNdExhS0NHMVJUNVlBN3V4aFZzPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjcyNTc5ODU4LCJleHAiOjE2NzI2NjYyNTh9.qRAAVY8GrnOIBBXbg4f15bU7q4CZQTrzloEx_p7ocFw
+
+{
+   "productId": 1,
+   "count": 1,
+   "name": "280",
+   "price": 100000
+}
+
+
+### 이메일 인증 ( 판매자 )
+GET http://localhost:8082/signup/seller/verify?email=hg116701@naver.com&code=BrVeJEmVYZ
+
+### 로그인 (판매자)
+POST http://localhost:8081/signIn/seller
+Content-Type: application/json
+
+{
+  "email": "hg116701@naver.com",
+  "password": "my"
+}
