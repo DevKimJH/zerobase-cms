@@ -41,9 +41,29 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJZZjhzaWJYMjR6VElkZWpXTnlYLzBHTjVNd
 }
 
 
-#########################
+#######################
 
 ### 회원가입 (판매자)
+POST http://localhost:8081/signup/seller
+Content-Type: application/json
+
+{
+  "birth": "1993-01-27",
+  "email": "hg116701@naver.com",
+  "name": "myName",
+  "password": "my",
+  "phone": "01000000000"
+}
+
+
+### 이메일 인증 ( 판매자 )
+GET http://localhost:8081/signup/seller/verify?email=hg116701@naver.com&code=BrVeJEmVYZ
 
 ### 로그인 (판매자)
+POST http://localhost:8081/signIn/seller
+Content-Type: application/json
 
+{
+  "email": "hg116701@naver.com",
+  "password": "my"
+}
